@@ -32,7 +32,8 @@ app.get("/api/", (req, res) => {
 app.get("/api/:timestamp", (req, res) => {
   timestampParam = req.params["timestamp"];
   let timestamp;
-  if (timestampParam.includes("-")) timestamp = new Date(timestampParam);
+  if (timestampParam.includes("-") || timestampParam.includes(" "))
+    timestamp = new Date(timestampParam);
   else timestamp = new Date(parseInt(timestampParam));
   let response = {};
   response["unix"] = timestamp.valueOf();
